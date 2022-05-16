@@ -31,7 +31,7 @@ has_many :purchase_records,dependent: :destroy
 ###Association###
 belongs_to :user
 has_many :purchase_records,dependent: :destroy
-has_one :user_address
+
 
 ###user_addressesテーブル（発送先情報）###
 | Column                | Type      | Options     |
@@ -39,15 +39,12 @@ has_one :user_address
 |post_number	          |string	    |null:false
 |prefecture_id	        |integer	  |null:false
 |city	                  |string	    |null:false
-|house_number	          |string	  |null: false
+|house_number	          |string	    |null: false
 |building_name	        |string	    |
 |phone_number	          |string	    |null:false
-|user	       　　        |references |	null: false, foreign_key: true
-|item                   |references |	null: false, foreign_key: true
+|purchase_record        |references |null:false
 
 ###Association###
-belongs_to :user
-belongs_to :item
 belongs_to :purchase_record
 
 
