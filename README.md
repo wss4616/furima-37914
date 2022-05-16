@@ -1,18 +1,18 @@
 ###usersテーブル（ユーザー情報）###
-| Column               | Type   | Options     |
-| -------------------- | ------ | ------------|
-| nickname	           |string	|null: false
-| email                |string	|null: false, unique:true
-| encrypted_password   |string  |null: false
-|family_name	         |string	    |null: false
-|first_name	           |string	    |null: false
-|family_name_kana	     |string	    |null: false
-|first_name_kana	     |string	    |null: false
-|birthday              |references  |null: false
+| Column               | Type    | Options     |
+| -------------------- | ------  | ------------|
+| nickname	           |string	 |null: false
+| email                |string	 |null: false, unique:true
+| encrypted_password   |string   |null: false
+|family_name	         |string   |null: false
+|first_name	           |string   |null: false
+|family_name_kana	     |string   |null: false
+|first_name_kana	     |string	 |null: false
+|birthday              |date     |null: false
 
 ###Association###
-has_many :items, dependent: :destroy, foreign_key: :items
-has_many :Purchase_Records,dependent: :destroy, foreign_key: :Purchase_Records
+has_many :items, dependent: :destroy
+has_many :purchase_records,dependent: :destroy
 
 
 ###itemsテーブル（商品情報）###
@@ -30,7 +30,7 @@ has_many :Purchase_Records,dependent: :destroy, foreign_key: :Purchase_Records
 
 ###Association###
 belongs_to :user
-has_many :Purchase_Records,dependent: :destroy, foreign_key: :Purchase_Records
+has_many :purchase_records,dependent: :destroy
 has_one :user_address
 
 ###user_addressesテーブル（発送先情報）###
@@ -39,7 +39,7 @@ has_one :user_address
 |post_number	          |string	    |null:false
 |prefecture_id	        |integer	  |null:false
 |city	                  |string	    |null:false
-|housenumber	          |integer	  |null: false
+|house_number	          |string	  |null: false
 |building_name	        |string	    |
 |phone_number	          |string	    |null:false
 |user	       　　        |references |	null: false, foreign_key: true
@@ -48,10 +48,10 @@ has_one :user_address
 ###Association###
 belongs_to :user
 belongs_to :item
-has_one :Purchase_Record
+belongs_to :purchase_record
 
 
-###Purchase_Recordsテーブル（購入記録）###
+###purchase_recordsテーブル（購入記録）###
 | Column                | Type      | Options     |
 | ----------------------| ----------| ------------|
 |user	   　　           |references	|null: false, foreign_key: true
@@ -60,4 +60,4 @@ has_one :Purchase_Record
 ###Association###
 belongs_to :user
 belongs_to :item
-belongs_to : user_address
+has_one : user_address
