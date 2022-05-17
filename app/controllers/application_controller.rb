@@ -1,7 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  
+  def create
+    @member = Member.new(member_params)
+    if @member.save
+      redirect_to members_path
+    else
+      render action: :new
+    end
+  end
 
   private
   def configure_permitted_parameters
