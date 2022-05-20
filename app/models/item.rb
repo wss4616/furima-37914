@@ -13,6 +13,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
   validates :name
+  validates :text
   validates :image
   validates :brand_id
   validates :delivery_charge_bearer_id
@@ -21,6 +22,7 @@ class Item < ApplicationRecord
   validates :status_id
   validates :price
   end
+  
 
   with_options numericality: { other_than: 1 } do
    validates :brand_id
