@@ -2,11 +2,10 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   # has_one_attached :image
 
+  
   def index 
     @items = Item.order("created_at DESC")
-  end
 
-  def show
   end
 
   def new
@@ -23,6 +22,7 @@ class ItemsController < ApplicationController
   end
 
 
+
   private
 
   def move_to_index
@@ -33,5 +33,6 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :text, :brand_id, :status_id, :delivery_charge_bearer_id, :prefecture_id, :delivery_day_id, :image, :price).merge(user_id: current_user.id)
+
   end
 end
