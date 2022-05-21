@@ -32,6 +32,6 @@ class Item < ApplicationRecord
   end
 
   validates_inclusion_of :price, in: 300..9999999
-  validates :price, numericality: { with: /\A[0-9]+\z/}
+  validates :price, numericality: only_integer: true
 
 end
