@@ -32,6 +32,5 @@ class Item < ApplicationRecord
   end
 
   validates_inclusion_of :price, in: 300..9999999
-  validates :price, numericality: only_integer: true
-
+  validates :price, numericality:{only_integer: true}  
 end
