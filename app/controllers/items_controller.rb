@@ -1,11 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  # has_one_attached :image
+  before_action :authenticate_user!, except: [:index]
 
-  
+
   def index 
-    @items = Item.order("created_at DESC")
-
   end
 
   def new
@@ -25,7 +22,7 @@ class ItemsController < ApplicationController
 
   private
 
-  def move_to_index
+  def index
     unless user_signed_in?
       redirect_to action: :index
     end
