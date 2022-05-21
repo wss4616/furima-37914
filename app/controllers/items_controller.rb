@@ -22,12 +22,6 @@ class ItemsController < ApplicationController
 
   private
 
-  def index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
-  end
-
   def item_params
     params.require(:item).permit(:name, :text, :brand_id, :status_id, :delivery_charge_bearer_id, :prefecture_id, :delivery_day_id, :image, :price).merge(user_id: current_user.id)
 
