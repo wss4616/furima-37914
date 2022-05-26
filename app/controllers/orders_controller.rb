@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
+  before_action :contributor_confirmation
+  before_action :sold_out
+
 
  def index
  @order_address = OrderAddress.new
@@ -36,5 +39,13 @@ private
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def contributor_confirmation
+    redirect_to root_path if current_user.id == @item.user.id
+  end
+
+  def sold_out
+    redirect_to root_path if @item.orders.present?
   end
 end
