@@ -46,6 +46,6 @@ private
   end
 
   def sold_out
-    redirect_to root_path if @item.orders.present?
+    redirect_to root_path if @item.order.present?
   end
 end

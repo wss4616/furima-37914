@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.orders.present?
+    if @item.order.present?
       redirect_to action: :index
       return
     end
