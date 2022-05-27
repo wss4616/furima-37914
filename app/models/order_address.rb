@@ -12,7 +12,6 @@ class OrderAddress
     validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :token
   end
-  
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
