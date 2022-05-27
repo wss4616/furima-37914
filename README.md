@@ -12,7 +12,7 @@
 
 ###Association###
 has_many :items, dependent: :destroy
-has_many :purchase_records,dependent: :destroy
+has_many :orders,dependent: :destroy
 
 
 ###itemsテーブル（商品情報）###
@@ -30,7 +30,7 @@ has_many :purchase_records,dependent: :destroy
 
 ###Association###
 belongs_to :user
-has_many :purchase_records,dependent: :destroy
+has_many :orders,dependent: :destroy
 
 
 ###user_addressesテーブル（発送先情報）###
@@ -42,13 +42,13 @@ has_many :purchase_records,dependent: :destroy
 |house_number	          |string	    |null: false
 |building_name	        |string	    |
 |phone_number	          |string	    |null:false
-|purchase_record        |references |null:false
+|order                  |references |null:false
 
 ###Association###
-belongs_to :purchase_record
+belongs_to :orders
 
 
-###purchase_recordsテーブル（購入記録）###
+###ordersテーブル（購入記録）###
 | Column                | Type      | Options     |
 | ----------------------| ----------| ------------|
 |user	   　　           |references	|null: false, foreign_key: true

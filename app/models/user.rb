@@ -18,6 +18,6 @@ end
 
 
   has_many :items, dependent: :destroy
-  #has_many :purchase_records,dependent: :destroy
+  has_many :orders, dependent: :destroy
 
 end

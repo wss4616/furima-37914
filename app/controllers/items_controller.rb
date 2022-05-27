@@ -23,7 +23,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.order.present?
+      redirect_to action: :index
+      return
+    end
   end
+
 
   def update
     if @item.update(item_params)
